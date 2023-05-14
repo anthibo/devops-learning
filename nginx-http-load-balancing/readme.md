@@ -25,7 +25,7 @@ events {}
 -   Proxies requests to the backend servers defined in the `upstream` block using the `location /` block, which defines the URL path that Nginx will use to proxy requests.
 -   Uses a round-robin load balancing algorithm to distribute incoming requests evenly across the backend servers, improving the overall performance and reliability of the application.
 
-[An architecture of one nginx instance load balance requests to 3 nodeapp instances](RR-3-apps-1-lb.png)
+![An architecture of one nginx instance load balance requests to 3 nodeapp instances](RR-3-apps-1-lb.png)
 
 
 **Spin NGINX Instance**
