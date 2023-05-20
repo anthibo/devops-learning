@@ -1,0 +1,65 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx-load-balancer
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - nodeapp1
+      - nodeapp2
+      - nodeapp3
+      - nodeapp4
+    networks:
+      - app-network
+
+  nodeapp1:
+    hostname: 'nodeapp1'
+    container_name: nodeapp1
+    image: nodeapp
+    environment:
+      - APPID=2222
+    ports:
+      - "2222:9999"
+    networks:
+      - app-network
+
+  nodeapp2:
+    hostname: 'nodeapp2'
+    container_name: nodeapp2
+    image: nodeapp
+    environment:
+      - APPID=3333
+    ports:
+      - "3333:9999"
+    networks:
+      - app-network
+
+  nodeapp3:
+    hostname: 'nodeapp3'
+    container_name: nodeapp3
+    image: nodeapp
+    environment:
+      - APPID=4444
+    ports:
+      - "4444:9999"
+    networks:
+      - app-network
+
+  nodeapp4:
+    hostname: 'nodeapp4'
+    container_name: nodeapp4
+    image: nodeapp
+    environment:
+      - APPID=5555
+    ports:
+      - "5555:9999"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
