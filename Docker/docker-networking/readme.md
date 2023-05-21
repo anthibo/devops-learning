@@ -177,4 +177,4 @@ traceroute to 10.0.1.2 (10.0.1.2), 64 hops max
 
 Overview Architecture of the isolated networks communication using a gateway: 
 
-![A simple architecture of isolated networks communications in docker](Docker-Networking.png)
+![A simple architecture of isolated networks communications in docker](docker-networking.png)
