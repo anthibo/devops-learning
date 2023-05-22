@@ -1,0 +1,61 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx-ws-load-balancer
+    image: nginx
+    hostname: "gateway"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - wsapp1
+      - wsapp2
+      - wsapp3
+      - wsapp4
+    networks:
+      - app-network
+
+  wsapp1:
+    hostname: 'wsapp1'
+    container_name: wsapp1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: node index.js 2222
+    networks:
+      - app-network
+
+  wsapp2:
+    hostname: 'wsapp2'
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: node index.js 3333
+    networks:
+      - app-network
+
+  wsapp3:
+    hostname: 'wsapp3'
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: node index.js 4444
+    networks:
+      - app-network
+
+  wsapp4:
+    container_name: wsapp4
+    hostname: 'wsapp4'
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: node index.js 5555
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

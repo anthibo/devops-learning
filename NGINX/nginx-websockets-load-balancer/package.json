@@ -1,0 +1,17 @@
+{
+  "name": "nginx-websockets-load-balancer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ws_loadbalancers_benchmarking.js",
+  "scripts": {
+    "test:layer_4": "node ws_loadbalancers_benchmarking.js layer_4 && node ws_loadbalancers_benchmarking.js layer_4 && node ws_loadbalancers_benchmarking.js layer_4 && node ws_loadbalancers_benchmarking.js layer_4",
+    "test:layer_7": "node ws_loadbalancers_benchmarking.js layer_7 && node ws_loadbalancers_benchmarking.js layer_7 && node ws_loadbalancers_benchmarking.js layer_7 && node ws_loadbalancers_benchmarking.js layer_7"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.13.0"
+  }
+}
